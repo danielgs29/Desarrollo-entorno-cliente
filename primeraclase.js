@@ -1,1 +1,1 @@
-alert("hola desde externo");
+//alert("I'm = \"I am\"\r\nI don\'t = \'I do not\'");s
