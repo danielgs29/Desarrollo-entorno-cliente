@@ -1,5 +1,4 @@
-var a;
-var b;
+let a=5;
 
 /*switch(a){
     case 1:{
@@ -22,4 +21,5 @@ var b;
 /* for(a=0,b=1; (a+b)<15; a++, b+=2){
 alert(a+b);
 }*/
+
 
