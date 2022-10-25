@@ -8,6 +8,25 @@
     <script src="primeraclase.js" type="text/javascript"></script>
 </head>
 <body>
-    
+    <h1>Calculadora Imc</h1>
+    <form>
+        <div>
+           Introduce tu peso: <input type="text" id="peso_usuario">
+        </div>
+        <div>
+           Introduce tu altura: <input type="text" id="aultura_usuario">
+        </div>
+        <input type="button" id="boton_calcular" value="Calcular" onclick="calcular_click()">
+    </form>
+    <div id="resultado_calculo" style="display:none">
+        <div id="error" style="display:none">
+            Alguno de los datos es incoreecto
+        </div>
+        <div id="datos_correctos">
+            <div>Tu IMC es: <span id="imc"></span></div>
+            <div>Tu Situación es: <span id="opinion"></span></div>
+            <div></div>
+        </div>
+    </div>
 </body>
 </html>

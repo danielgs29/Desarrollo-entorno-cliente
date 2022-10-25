@@ -34,27 +34,27 @@ imc=(peso)/(alturaMetros*alturaMetros);
 return imc;
 }
 
-function calcularSituacion(indice){
+function opinionMedicaIMC(indice){
     let situacion;
     if(indice<16.00){
         situacion= "Delgadez Severa";
     }
-    if(indice<16.99 && indice >16.00){
+    else if(indice<=16.99 && indice >16.00){
         situacion= "Delgadez Moderada";
     }
-    if(indice<18.05 && indice >16.99){
+    else if(indice<=18.05 && indice >16.99){
         situacion= "Delgadez leve";
     }
-    if(indice<25 && indice >18.05){
+    else if(indice<=25 && indice >18.05){
         situacion= "Normal";
     }
-    if(indice<35 && indice >25){
+    else if(indice<=35 && indice >25){
         situacion= "Obesidad Leve";
     }
-    if(indice<40 && indice >35){
+    else if(indice<40 && indice >35){
         situacion= "Obesidad Media";
     }
-    if(indice>40){
+    else{
         situacion= "Obesidad Morbida";
     }
 
@@ -66,10 +66,20 @@ let peso = prompt("Dime tu peso en kilos");
 let altura = prompt("Dime tu altura en centimetros");
 
 let imc =calculaIMC(peso,altura);
-let situ=calcularSituacion(imc);
+let situ=opinionMedicaIMC(imc);
 
 if(isNaN(imc)){
     alert("Alguno de los datos es incorrecto");
 }else{
     alert("tu imc es "+ imc + " "+situ);
+document.write("<h1>Calculadora de imc</h1>")
+document.write("<p>Peso: "+ peso + "</p>")
+document.write("<p>Altura: "+ altura + "</p>")
+document.write("<p>Imc: "+ imc + "</p>")
+document.write("<p>opinion medica: "+ situ + "</p>")
 }
+
+function calcular_click(){
+    
+}
+

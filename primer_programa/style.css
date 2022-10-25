@@ -1,0 +1,10 @@
+*{
+    font-family: sans-serif;
+}
+#error{
+    color: red;
+    padding: 0.5em;
+}
+#resultado_calculo{
+    margin-top: 1.5em;
+}
