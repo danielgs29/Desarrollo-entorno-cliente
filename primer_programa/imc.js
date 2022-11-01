@@ -18,7 +18,7 @@ let alturaMetros;
 peso = Number(peso);
 altura=Number(altura);
 
-//validamos que no sea numeros
+//validamos que sea numeros
 if(isNaN(peso) || isNaN(altura)){
     return NaN;
 }
