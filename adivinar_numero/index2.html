@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivino tu numero</title>
+    <script src="juego2.js "></script>
+</head>
+<body>
+    <h1>Piensa en un numero y el programa lo adivinara</h1>
+    <form>
+      <fieldset>
+        <div>
+            <label for="campo_minimo">Intoduce el valor minimo</label>
+            <input type="text" id="campo_minimo">
+        </div>
+        <div>
+            <label for="campo_maximo">Intoduce el valor maximo</label>
+            <input type="text" id="campo_maximo">
+        </div>
+        <input type="button" id="inicio" value="Jugar" onclick="datos()">
+      </fieldset>
+    </form></br>
+
+    <div id="error_datos" style="display:none;">Datos incorrectos Por favor introduce solo numeros</div>
+
+    <form style="display:none;" id="datos_correctos">
+      <fieldset>
+        <h2>El numero que pensaste es el: <span id="intento"></span></h2>
+        <h2></h2>
+        <input type="radio" name="respuesta" value="Correcto"> Correcto
+        <input type="radio" name="respuesta" value="mayor" > Es Mayor
+        <input type="radio" name="respuesta" value="menor" > Es Menor
+        <input type="button" id="respuesta" value="Enviar" onclick="responder()">
+      </fieldset>
+    </form>
+    <h2 style="display: none;" id="acertado">¡He ganado!</h2>
+</body>
+</html>
