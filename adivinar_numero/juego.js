@@ -1,6 +1,9 @@
 const VALOR_MAXIMO =1000; 
-// genera el numero aleatoriamente entr uno y mil
+// genera el numero aleatoriamente entr uno y milzzzz
 let aleatorio =  Math.floor(Math.random() * VALOR_MAXIMO + 1);
+let numer=1;
+let numer2=""
+console.log(Number(numer/numer22))
 
 // funcion que valida si el valor introducido es un numero y si es mayor que cero
 function validacion(valor){

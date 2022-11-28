@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let numer = String(1);
+        var aleatorio,maximo,minimo; 
+        function datos(){
+           event.preventDefault();
+           maximo=document.getElementById("maximo").value 
+           minimo=document.getElementById("minimo").value 
+           aleatorio=Math.floor(Math.random() * (maximo - minimo) + minimo);
+           let espacio=document.getElementById("espacio");
+           let texto=document.getElementById("texto");
+           texto.innerText="Tu numero es" +" "+ aleatorio;
+           espacio.style="";
+        }
+       function responder(){
+            if(document.getElementById("menor").checked){
+                maximo=aleatorio-1;
+            }
+            else if(document.getElementById("mayor").checked){
+                minimo=aleatorio+1;
+            }
+            else if(document.getElementById("correcto").checked){
+                let fin=document.getElementById("fin");
+                fin.innerText="he ganado";
+                return;
+            }
+            aleatorio=Math.floor(Math.random() * (maximo - minimo) + minimo);
+            texto.innerText="Tu numero es" +" "+ aleatorio;
+       }
+    </script>
+</head>
+<body>
+    <h1>Piensa en un numero y el programa lo adivinara</h1>
+    <form>
+        <fieldset>
+            Introuce el valor maximo <input type="number" id="maximo"><br>
+            Introduce el valor minimo <input type="number" id="minimo"><br>
+            <button onclick=datos()>Jugar</button>
+        </fieldset><br>
+    </form>
+    <fieldset style="display:none;" id="espacio">
+        <h2 id="texto"></h2>
+        <input type="radio" name="radio" id="correcto">correcto
+        <input type="radio" name="radio" id="mayor">Es mayor
+        <input type="radio" name="radio" id="menor">Es menor
+        <button onclick=responder()>Enviar</button>
+    </fieldset>
+    <h2 id="fin"></h2>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        
+        const VALOR_MAXIMO=1000
+        function generarNumero(){
+            let aleatorio =  Math.floor(Math.random() * VALOR_MAXIMO + 1);
+            return aleatorio;
+        }
+
+        function jugar(){
+            let generado= generarNumero();
+            let acertado=false;
+
+            let introducido=prompt("introduzca un numero");
+            while(isNaN(introducido)){
+                introducido=prompt("por favor introduzca solo numeros");
+            }
+
+            while(!acertado&& introducido!=0){
+                if(introducido<generado){
+                    introducido=prompt(introducido+" " +"es menor introduzca otro");
+                    while(isNaN(introducido)){
+                introducido=prompt("por favor introduzca solo numeros");
+            }
+                }
+                else if(introducido>generado){
+                    introducido=prompt(introducido+" " +"es mayor introduzca otro");
+                    while(isNaN(introducido)){
+                introducido=prompt("por favor introduzca solo numeros");
+            }
+                }
+                else if(introducido==generado){
+                    alert("felicidades has acertado");
+                    acertado=true;
+                }
+            }
+
+        }
+
+        window.onload=jugar;
+    </script>
+</head>
+<body>
+    <h1>Adivina el numero</h1>
+</body>
+</html>

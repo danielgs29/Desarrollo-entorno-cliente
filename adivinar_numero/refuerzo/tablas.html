@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+Escribe una página web que, vía formulario, solicite un número de filas
+y un número de columnas. Al pulsar un botón del formulario
+creará, a continuación del formulario, una tabla con tantas
+filas y columnas como haya indicado el usuario
+Para cada celda, el contenido será el número de celda, en orden inverso
+Si alguno de los parámteros no es válido (no es un número o es menor de 1)
+mostrará, en el HTML, un mensaje de error
+Antes de mostrar una nueva tabla se borrará el resultado anterior
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tablas</title>
+    <script>
+        function iniciar(){
+            let columnas=document.getElementById("columnas").value;
+            let filas=document.getElementById("filas").value;
+            let tabla=document.getElementById("tabla");
+            let body=document.createElement("tbody");
+            let total=filas*columnas;
+            let error=document.getElementById("error");
+            tabla.textContent="";
+            error.textContent="";
+            if(isNaN(columnas)|| columnas<1 || isNaN(filas)|| filas<1){
+                error.textContent="error";
+                return;
+            }
+            for(let i=0; i<filas;i++){
+                let tr=document.createElement("tr");
+                for(let j=0; j<columnas; j++){
+                    let td=document.createElement("td");
+                    td.textContent=total;
+                    total--;
+                    tr.appendChild(td);
+                }
+                body.appendChild(tr);
+            }
+            tabla.appendChild(body);
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <label for="filas">Numero de filas</label>
+        <input type="number" min="1" id="filas">
+        <label for="columnas">Numero de columnas</label>
+        <input type="number" min="1" id="columnas">
+        <button onclick="iniciar()" type="button">Enviar</button>
+    </form>
+    <table id="tabla"></table>
+    <div id="error"></div>
+</body>
+</html>

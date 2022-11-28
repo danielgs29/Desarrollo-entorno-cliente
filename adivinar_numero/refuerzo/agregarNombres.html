@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>agregar</title>
+    <script>
+        function insertar(evt){
+            evt.preventDefault();
+            let nombre=document.getElementById("nombre").value;
+            let ul=document.getElementById("nombres");
+            let li=document.createElement("li");
+            li.textContent=nombre;
+            ul.appendChild(li);
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <input type="text"  id="nombre">
+        <button onclick="insertar(event)">insertar</button>
+    </form>
+    <ul id="nombres"></ul>
+</body>
+</html>

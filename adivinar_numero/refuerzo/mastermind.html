@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        const VALOR_MAXIMO =10; 
+        var numero1 =  Math.floor(Math.random() * VALOR_MAXIMO );
+        var numero2=  Math.floor(Math.random() * VALOR_MAXIMO );
+        var numero3 =  Math.floor(Math.random() * VALOR_MAXIMO );
+       
+        function jugar(){
+            event.preventDefault();
+
+            let dato1=document.getElementById("uno");
+            let dato2=document.getElementById("dos");
+            let dato3=document.getElementById("tres");
+            
+            dato1.innerText=numero1;
+            dato2.innerText=numero2;
+            dato3.innerText=numero3;
+
+            let introducido1=document.getElementById("numero1").value;
+            let introducido2=document.getElementById("numero2").value;
+            let introducido3=document.getElementById("numero3").value;
+
+            var table=document.getElementById("intentos");
+            var body=document.createElement("tbody");
+
+
+            let fila=document.createElement("tr");
+
+            let td1=document.createElement("td");
+            td1.innerText=introducido1;
+            fila.appendChild(td1);
+
+            let td2=document.createElement("td");
+            td2.innerText=introducido2;
+            fila.appendChild(td2);
+
+            let td3=document.createElement("td");
+            td3.innerText=introducido3;
+            fila.appendChild(td3);
+
+            body.appendChild(fila);
+            table.appendChild(body);
+
+            if(introducido1==numero1||introducido1==numero2||introducido1==numero3){
+                td1.style="background-color:yellow";
+            } else{
+                td1.style="background-color:red";
+            }
+            if(introducido2==numero1||introducido2==numero2||introducido2==numero3){
+                td2.style="background-color:yellow";
+            }else{
+                td2.style="background-color:red";
+            }
+            if(introducido3==numero1||introducido3==numero2||introducido3==numero3){
+                td3.style="background-color:yellow";
+            } else{
+                td3.style="background-color:red";
+            }
+
+            if(introducido1==numero1){
+                td1.style="background-color:green";
+            }
+           
+            if(introducido2==numero2){
+                td2.style="background-color:green";
+            }
+            
+            if(introducido3==numero3){
+                td3.style="background-color:green";
+            } 
+        }
+    </script>
+</head>
+<body>
+    <h1>Mastermind</h1>
+    <div id="uno">0</div>
+    <div id="dos">0</div>
+    <div id="tres">0</div>
+
+    <form>
+        <input type="number" placeholder="numero1" id="numero1">
+        <input type="number" placeholder="numero2" id="numero2">
+        <input type="number" placeholder="numero3" id="numero3">
+        <button onclick="jugar()">Enviar</button>
+    </form>
+    <table id="intentos"></table>
+</body>
+</html>

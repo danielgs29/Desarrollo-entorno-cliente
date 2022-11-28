@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function recogerDatos(){
+            let nombre=document.getElementById("nombre").value;
+            let telefono=document.getElementById("telefono").value;
+            let email=document.getElementById("email").value;
+
+            let sabor="";
+            let extras=[];
+
+            if(document.getElementById("vainilla").checked){
+                sabor="vainilla";
+            }
+           else if(document.getElementById("chocolate").checked){
+                 sabor="chocolate";
+            }
+           else if(document.getElementById("limon").checked){
+                 sabor="limon";
+            }
+
+            if(document.getElementById("copa").checked){
+                 recipiente="copa";
+            }
+            else if(document.getElementById("vaso").checked){
+                 recipiente="vaso";
+            }
+
+            if(document.getElementById("galleta").checked){
+                 extras.push("galleta");
+            }
+             if(document.getElementById("kitkat").checked){
+                extras.push("kitkat");
+            }
+             if(document.getElementById("caramelo").checked){
+                extras.push("caramelo");
+            }
+
+            let resumen=document.getElementById("resumen");
+
+            let titulo=document.createElement("h1");
+            titulo.textContent="Resumen Pedido";
+            resumen.appendChild(titulo);
+
+            let nombred=document.createElement("p");
+            nombred.textContent="mombre"+nombre;
+            resumen.appendChild(nombred);
+
+            let emaild=document.createElement("p");
+            emaild.textContent="email"+email;
+            resumen.appendChild(emaild);
+
+            let telefonod=document.createElement("p");
+            telefonod.textContent=telefono;
+            resumen.appendChild(telefonod);
+
+            let sabord=document.createElement("p");
+            sabord.textContent=sabor;
+            resumen.appendChild(sabord);
+
+            let recipiented=document.createElement("p");
+            recipiented.textContent=recipiente;
+            resumen.appendChild(recipiented);
+
+            
+            let extrasd=document.createElement("p");
+            for(let i=0; i<extras.length;i++){
+                extrasd.textContent+=extras[i]+" ";
+            }
+            resumen.appendChild(extrasd);
+
+        }
+    </script>
+</head>
+<body>
+    <h1>Heladeria</h1>
+
+    <fieldset>
+        <legend>Datos del usuario</legend>
+        Nombre <input type="text" id="nombre">
+        Telefono <input type="text" id="telefono">
+        email <input type="email" id="email">
+    </fieldset>
+    <fieldset>
+        <legend>Elige tu helado</legend>
+        <h1>sabor</h1>
+        <input type="radio" name="sabor" id="vainilla">Vainilla
+        <input type="radio" name="sabor" id="chocolate">chocolate
+        <input type="radio" name="sabor" id="limon">Limon
+
+        <h1>recipiente</h1>
+        <input type="radio" name="recipiente" id="copa">Copa
+        <input type="radio" name="recipiente" id="vaso">Vaso
+
+        <h1>Extras</h1>
+        <input type="checkbox" name="extras" id="galleta">galleta
+        <input type="checkbox" name="extras" id="caramelo">Caramelo
+        <input type="checkbox" name="extras" id="kitkat">kitkat
+    </fieldset>
+    <button type="button" onclick="recogerDatos()">Enviar</button>
+
+    <div id="resumen"></div>
+</body>
+</html>

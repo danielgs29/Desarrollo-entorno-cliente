@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ejercicios basicos 7</title>
+    <script>
+       // Al pulsar el boton de añadir fecha debe de añadir una fecha correcta a un array. Debes poner un alert indicandolo.
+    //Al pulsar el boton de mostrar fechas, debera mostrar la fecha mayor, la menor y el numero de fechas introducidas
+        var fechas=[]
+        function añadirFecha(){
+            let fecha = document.getElementById("fecha").value;
+
+            if(fecha==""){
+                alert("por favor introduzca una fecha valida");
+            }
+
+            else{
+            fechas.push(fecha);
+            alert("La fecha se ha introducido correctamente");
+            }
+        }
+
+        function mostrarResultados(){
+            let mayore=document.getElementById("fechaMayor");
+            let menore=document.getElementById("fechaMenor");
+            let nume=document.getElementById("numFechas");
+
+            let mayor="0000-00-00";
+            let menor="0000-00-00";
+            let current="0000-00-00";
+            let total=0;
+
+
+            for(let i=0;i<fechas.length;i++){
+                current=fechas[i];
+                if(i==0){
+                    menor=current;
+                }
+                
+                if(current>mayor){
+                    mayor=current;
+                }
+                 if(current<menor){
+                    menor=current;
+                }
+                total++;
+            }
+
+            mayore.textContent=mayor;
+            menore.textContent=menor;
+            nume.textContent=total;
+        }
+    </script>
+</head>
+<body>
+
+    <form name="formFechas">
+
+        <label for="fecha">Fecha</label>
+        <input type="date" name="fecha" id="fecha" />
+
+        <button type="button" onclick="añadirFecha()">Añadir fecha</button>
+        <button type="button" onclick="mostrarResultados()">Mostrar mayor, menor y numero de fechas</button>
+    </form>
+
+    <div id="resultados">
+        <p>La fecha mayor es: <span id="fechaMayor"></span></p>
+        <p>La fecha menor es: <span id="fechaMenor"></span></p>
+        <p>El numero de fechas es: <span id="numFechas"></span></p>
+    </div>
+
+    
+</body>
+</html>
+Footer
+© 2022 GitHub, Inc.

@@ -1,10 +1,11 @@
+window.onload=numeros;
 
 function numeros(){
     let introducido=0;
     let cuenta=0;
     let total=0;
-    let parra=document.getElementById("total");
-    let parrafo=parra.value;
+    let parrafo=document.getElementById("total");
+    console.log(parrafo);
 
     do{
     introducido=prompt("introduce un numero");
@@ -16,9 +17,12 @@ function numeros(){
     }
 
     total+=introducido;
-    cuenta++; console.log(cuenta);
-    parra.innerText=total;
+    cuenta++;
+    parrafo.innerText=total;
+    console.log(total);
     }while(introducido!=null);
+
+   
 
 }
 

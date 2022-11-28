@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>numeros</title>
+    <script>
+        function comparador(){
+            let numero1=document.getElementById("numero1").value;
+            let numero2=document.getElementById("numero2").value;
+
+            if(isNaN (numero1)|| isNaN(numero2))return;
+
+            if(Number(numero1)>Number(numero2)){
+                alert("El numero"+ `${numero1}`+"es el mayor" );
+            }
+            else if(numero2>numero1){
+                alert("El numero"+ `${numero2}`+"es el mayor" );
+            }
+            else{
+                alert("son iguales" );
+            } 
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <input type="number"id="numero1">
+        <input type="number"id="numero2">
+        <button onclick="comparador()">Enviar</button>
+    </form>
+</body>
+</html>
