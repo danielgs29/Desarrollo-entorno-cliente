@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="arrays.js"></script>
+        <script>
+            function array_toString_compacto(array) {
+                let resultado = "[";
+
+                for (indice in array) {
+                    if (resultado.length > 1) resultado += "; "
+                    resultado += `${indice}: ${array[indice]}`;
+                } // for indice
+
+                resultado += "]";
+
+                return resultado;
+            }
+
+            function println(texto) {
+                let zona = window.document.getElementById("zona_print");
+                if (zona === null) {
+                    zona = window.document.createElement("code");
+                    zona.id = "zona_print";
+                    window.document.body.append(zona);
+                } // if
+
+                if (arguments.length == 0) texto = "\u00A0"; // 00A0 = &#160 = &nbsp;
+
+                let div = window.document.createElement("div");
+                div.textContent = String(texto);
+                zona.append(div);
+            } // println
+
+            window.onload = () => {
+            let array = [0, ,2, 3, ,5 , 6]
+            
+            println(`array = ${array_toString_compacto(array)}`);
+            println();
+
+            let slice1 = array.slice(2, 6);
+            let especial1 = array_slice_especial(array, 2, 6);
+
+            println(`normal:   ${array_toString_compacto(slice1)}`);
+            println(`especial: ${array_toString_compacto(especial1)}`);
+
+            println();
+
+            let slice2 = array.slice(-4, -1);
+            let especial2 = array_slice_especial2(array, -4, -1);
+
+            println(`normal:   ${array_toString_compacto(slice2)}`);
+            println(`especial: ${array_toString_compacto(especial2)}`);
+
+            println();
+
+            let estadisticas = array_estadisticas(array);
+            println(`estadísticas: ${array_toString_compacto(estadisticas)}`);
+
+            array = [];
+            println(`array = []`);
+            println(`estadísticas: ${array_toString_compacto(array_estadisticas(array))}`);
+
+            array = null;
+            println(`array = null`);
+            println(`estadísticas: ${array_toString_compacto(array_estadisticas(array))}`);
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Funciones con arrays</h1>
+    </body>
+</html>
