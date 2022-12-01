@@ -1,60 +1,124 @@
+// --@ts-check
+"use strict";
 
-var lista_funciones_operadores=[];
-var lista_operadores=[];
-var inicializado=false;
+var lista_funciones_operadores = [];
+var lista_operadores_texto = [];
+var lista_operadores = [];
+var inicializado = false;
 
-function inicializar_operadores(){
-    lista_funciones_operadores.push((op1,op2)=>op1 + op2);
-    lista_operadores.push("+");
-
-    lista_funciones_operadores.push((op1,op2)=>op1 - op2);
-    lista_operadores.push("-");
-
-    lista_funciones_operadores.push(Math.min);
-    lista_operadores.push("min");
-
-    lista_funciones_operadores.push((op1)=>-op1);
-    lista_operadores.push("neg");
-
-    lista_funciones_operadores.push((op1,op2)=>{
-        let rango=(op2-op1)+1;
-        return Math.trunc(Math.random()*rango)+op1;
-    })
-    lista_operadores.push("random");
+class Operador {
+    constructor(funcion, texto, ayuda, operandos) {
+        this.funcion = funcion;
+        this.texto = texto;
+        this.ayuda = ayuda;
+    }
 }
 
-function inicializar_calculadora(){
-    if(inicializado) return;
+class OperadorExtendido extends Operador{
+    constructor(funcion,texto,ayuda,operandos){
+        super(funcion,texto,ayuda);
+        this.operandos = (operandos === undefined) ? 2 : operandos;
+    }
+};
+
+function objeto_operador(funcion,texto,ayuda,operandos){
+    this.funcion=funcion;
+    this.texto=texto;
+    this.ayuda=ayuda;
+    this.operandos=(operandos===undefined)?2:operandos;
+}
+
+function inicializar_operadores() {
+    let operador = new Object();
+    operador.funcion = (op1, op2) => op1 + op2;
+    operador.texto = "+";
+    operador.ayuda = "Suma de los dos números";
+
+    lista_operadores.push(operador);
+
+    operador = new objeto_operador(
+        (op1,op2)=>op1 - op2,
+        "-", "Diferencia de los numeros");
+    lista_operadores.push(operador);
+
+    operador = {
+     funcion:(op1) => -op1,
+     texto: "neg",
+     ayuda:"Cambio de signo",
+     operandos: 1,
+    };
+    lista_operadores.push(operador);
+
+    operador = new Operador((op1,op2)=> op1 * op2,"*");
+    lista_operadores.push(operador);
+
+    operador= new OperadorExtendido(Math.random, "0-1", "obtiene un numero entre 0 y uno",0);
+    lista_operadores.push(operador);
+
+}
+
+function on_combo_change_mostrar_ayuda() {
+    let combo = (window.document.getElementById("combo_operador"));
+    let indice = Number(combo.value);
+
+    let operador = lista_operadores[indice];
+
+    let ayuda = window.document.getElementById("ayuda");
+    ayuda.textContent = operador.ayuda;
+} // on_combo_change_mostrar_ayuda
+
+function on_combo_change_habilitar_operandos(){
+    let combo = (window.document.getElementById("combo_operador"));
+    let indice = Number(combo.value);
+    let operador = lista_operadores[indice];
+
+    let operandos=operador.operandos;
+    if(operandos==undefined)operandos=2;
+
+    let input1 = window.document.getElementById("input_operando_1");
+    input1.disabled=(operandos<1);
+
+    let input2 = window.document.getElementById("input_operando_2");
+    input2.disabled=(operandos<2);
+}
+
+function inicializar_calculadora() {
+    if (inicializado) return;
 
     inicializar_operadores();
 
-    //inicializar el combo
-
-    let combo= window.document.getElementById("combo_operador")
-    for(let i=0; i<lista_operadores.length;i++){
-        let option=window.document.createElement("option");
-        option["value"]=String(i);
-        option.textContent=lista_operadores[i];
+    // inicializar el combo
+    let combo = (window.document.getElementById("combo_operador"));
+    for (let i = 0 ; i<lista_operadores.length ; i++) {
+        let option = window.document.createElement("option");
+        option["value"] = String(i);
+        option.textContent = lista_operadores[i].texto;
 
         combo.append(option);
-    }
-    inicializado=true;
-}
+    } // for i
 
-function calcular(event){
-    event.preventDefault();
-    let operando1=document.getElementById("op1").value;
-    let operando2=document.getElementById("op2").value;
+    on_combo_change_habilitar_operandos();
+    on_combo_change_mostrar_ayuda();
+    combo.addEventListener("change", on_combo_change_mostrar_ayuda);
+    combo.addEventListener("change", on_combo_change_habilitar_operandos);
 
-    operando1=Number(operando1);
-    operando2=Number(operando2);
+    inicializado = true;
+} // inicializar_calculadora
 
-    let indice_combo=document.getElementById("combo_operador").value;
-    let operador=lista_funciones_operadores[indice_combo];
+function calcular() {
+    let operando1 = (window.document.getElementById("input_operando_1")).value;
+    let operando2 = window.document.getElementById("input_operando_2").value;
 
-    let resultado=operador(operando1,operando2);
-    let resultadoe=document.getElementById("resultado");
-    resultadoe.textContent=(resultado);
+    operando1 = Number(operando1);
+    operando2 = Number(operando2);
 
-}
-window.onload=inicializar_calculadora;
+    let indice_combo = window.document.getElementById("combo_operador").value;
+    let operador = lista_operadores[indice_combo].funcion;
+
+    let resultado = operador(operando1, operando2);
+
+    let span_resultado = window.document.getElementById("input_resultado");
+    span_resultado.value = `${resultado}`;
+} // calcular
+
+window.onload = inicializar_calculadora;
