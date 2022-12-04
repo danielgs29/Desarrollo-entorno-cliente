@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora</title>
-    <script src="calculadora.js"></script>
-</head>
-<body>
-    <form>
-       numero1 <input type="number"  id="input_operando_1">
-       operacion <select id="combo_operador">
-          
+<html>
+    <head>
+        <title>Calculadora básica</title>
+        <meta charset="utf-8">
+        <script src="calculadora.js"></script>
+        <style>
+            * { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+            input:disabled { opacity: 50%; }
+        </style>
+    </head> 
+    <body>
+        <h1>Calculadora básica</h1>
+        <input type="number" id="input_operando_1">
+        <select id="combo_operador">
         </select>
-        numero2 <input type="number"  id="input_operando_2">
-        <span id="resultado">resultado</span>
-       
-    </form>
-    <button id="calcular" onclick="calcular(event)">Enviar</button>
-    <p id="ayuda"></p>
-</body>
+        <input type="number" id="input_operando_2">
+        =
+        <input type="text" id="input_resultado" readonly size="15"></span>
+        <input type="button" value="calcular" onclick="calcular();">
+        <p id="ayuda"></p>
+    </body>
 </html>

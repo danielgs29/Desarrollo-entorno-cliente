@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas" width="200" height="200"></canvas>
+    <script>
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+
+      const CELL_SIZE = 10; // The size of each cell in the game grid
+      const GRID_SIZE = 20; // The number of cells in the grid
+      const SPEED = 100; // The delay between each game tick, in milliseconds
+
+      // The Snake class represents the snake and its properties
+      class Snake {
+        constructor() {
+          this.position = [{ x: 2, y: 2 }, { x: 1, y: 2 }, { x: 0, y: 2 }];
+          this.direction = 'right';
+          this.nextDirection = 'right';
+        }
+
+        // Move the snake in its current direction
+        move() {
+          const head = { x: this.position[0].x, y: this.position[0].y };
+
+          this.direction = this.nextDirection;
+
+          if (this.direction === 'right') {
+            head.x += 1;
+          } else if (this.direction === 'left') {
+            head.x -= 1;
+          } else if (this.direction === 'up') {
+            head.y -= 1;
+          } else if (this.direction === 'down') {
+            head.y += 1;
+          }
+
+          this.position.unshift(head);
+          this.position.pop();
+        }
+
+        // Check if the snake has collided with the walls or itself
+        collidesWith(position) {
+          // Check if the snake has hit a wall
+          if (
+            this.position[0].x < 0 ||
+            this.position[0].x >= GRID_SIZE ||
+            this.position[0].y < 0 ||
+            this.position[0].y >= GRID_SIZE
+          ) {
+            return true;
+          }
+
+          // Check if the snake has collided with itself
+          for (let i = 1; i < this.position.length; i++) {
+            if (this.position[0].x === this.position[i].x && this.position[0].y === this.position[i].y) {
+              return true;
+            }
+          }
+
+          return false;
+        }
+      }
+
+      // The Food class represents the food that the snake will eat
+      class Food {
+        constructor() {
+          this.position = { x: 0, y: 0 };
+          this.color = 'green';
+
+          this.randomizePosition();
+        }
+
+        // Set a random position for the food on the game grid
+        randomizePosition() {
+          this.position.x = Math.floor(Math.random() * GRID_SIZE);
+          this.position.y = Math.floor(Math.random() * GRID_SIZE);
+        }
+      }
+
+      // The Game class manages the game state and game loop
+      class Game {
+  constructor() {
+    this.snake = new Snake();
+    this.food = new Food();
+    this.score = 0;
+    this.over = false;
+
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    document.addEventListener('keydown', this.handleKeyDown);
+  }
+}
+function execute () {
+    let game = new Game();
+}
+
+window.onload = execute;
+
+</script>
+  </body>
+</html>
