@@ -45,3 +45,10 @@ function array_insertar_elementos(array, indice, array_elementos) {
 array=[1,2,3,4,5];
 array_eliminar_elementos(array,1,3);
 console.log(array);
+
+//two dimensions array?
+
+
+
+
+
