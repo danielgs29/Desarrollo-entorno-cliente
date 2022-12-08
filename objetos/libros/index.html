@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libreria</title>
+    <script src="Libros.js"></script>
+    <style>
+        h1{
+            text-align: center;
+        }
+        #container{
+            display: flex;
+            justify-content: center;
+        }
+        #boton2{
+            margin: 0 auto;
+        }
+        #tablas{
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Guarda tus Libros</h1>
+    <br>
+    <div id="container">
+    <form action="">
+        <label for="titulo">Titulo:</label>
+        <input type="text" id="titulo" name="titulo">
+        <label for="Autor">Autor:</label>
+        <input type="text" id="autor" name="autor">
+        <label for="Año">Año:</label>
+        <input type="number" id="año" name="año">
+        <label for="Genero">Genero:</label>
+        <input type="text" id="genero" name="genero">
+        <button id="boton" onclick="validar(event)">Guardar</button>
+        <button id="boton2" onclick="mostrar(event)">Mostrar Libros</button>
+        <button id="boton3" onclick="mostrarOrdenado(event)">Mostrar Autores</button>
+        <br>
+        <br>
+        <label for="info">Buscar informacion por categoria</label>
+        <input type="text" id="info" name="info">
+        <button id="boton4" onclick="mostrarInfo(event)">Buscar</button>
+    </form>    
+</div>
+<br>
+<div id="tablas" >
+    <table id="tabla" border="2"  style="display:none">
+    </table>
+</div>
+</body>
+</html>
