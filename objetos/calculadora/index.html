@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <script src="calculadora.js"></script>
+    <style>
+        * { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        input:disabled { opacity: 50%; }
+    </style>
+</head>
+<body>
+    <label for="op1">Operador1</label>
+    <input type="number" id="op1">
+    <select name="operadores" id="operadores">Operador2</select>
+    <label for="op2">Operador2</label>
+    <input type="number" id="op2">
+    <label for="resultado">Resultado</label>
+    <input type="text" id="resultado">
+    <button type="button" onclick="calcular()">Calcular</button>
+
+    <p id="texto"></p>
+</body>
+</html>

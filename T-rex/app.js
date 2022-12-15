@@ -17,6 +17,23 @@ document.addEventListener("keydown",(evento)=>{
     }
 });
 
+document.addEventListener("click",(evento)=>{
+    if(evento){
+        console.log("salta");
+        if(nivel.muerto==false){
+            if(trex.saltando==false){
+        saltar();}}
+        else{
+            nivel.velocidad=9;
+            nube.velocidad=1;
+            cactus.x=ancho+100;
+            nube.x=ancho+100;
+            nivel.muerto=false
+            nivel.marcador=0;
+        }
+    }
+});
+
 var imgRex, imgNubes, imgCactus, imgSuelo, imgCactus2, imgCactus3, imgTero, imgStep, imgMuerto;
 var aleatorio=0;
 var step=0;
