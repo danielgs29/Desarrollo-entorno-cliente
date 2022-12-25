@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De Las piramides A Cleopatra</title>
+    <script src="de-las-piramides-a-cleopatra.js"></script>
+    <script src="de-las-piramides-a-cleopatra-parte-2.js"></script>
+    <style>
+         #table,tr, td, thead, th{
+            border:1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        thead{
+            background-color: gainsboro;
+        }
+        table{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <label for="año1">Año 1:</label>
+    <input type="number" id="año1">
+
+    <label for="año2">Año 2:</label>
+    <input type="number" id="año2">
+
+    <label for="año3">Año 3:</label>
+    <input type="number" id="año3">
+
+    <button type="button" onclick="calcular()">Calcular</button>
+
+</br>
+    
+    <table id="tabla" style="display: none">
+        <thead>
+            <tr>
+                <th>A</th>
+                <th>B</th>
+                <th>C</th>
+                <th>Resultado</th>
+            </tr>
+        </thead>
+    </table>
+</body>
+</html>

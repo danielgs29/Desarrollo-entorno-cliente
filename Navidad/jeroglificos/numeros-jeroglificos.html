@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeroglificos</title>
+    <script src="numeros-jeroglificos-v2.js"></script>
+    <script src="numeros-jeroglificos-parte-3.js"></script>
+    <style>
+        .jeroglifico { 
+            font-family: sans-serif ; font-size: 3em; 
+            padding-bottom: 33px;
+
+        }
+        #table,tr, td,thead,th{
+            border:1px solid black;
+            border-collapse: collapse;
+        }
+        tr, td{
+            padding: 10px;
+        }
+        table{
+            text-align: center;
+            margin-top: 10px;
+        }
+        thead{
+            background-color: gainsboro;
+        }
+    </style>
+</head>
+<body>
+    <input type="number" id="numero"style>
+    <button id="boton" onclick="crearTabla()">convertir</button>
+
+    <table id="tabla" style="display: none">
+        <thead>
+            <th>Numero</th>
+            <th>Simbolico</th>
+            <th>jeroglifico</th>
+        </thead>
+    </table>
+
+</body>
+</html>
