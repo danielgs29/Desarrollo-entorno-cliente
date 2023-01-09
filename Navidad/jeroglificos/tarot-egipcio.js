@@ -1,4 +1,8 @@
-function shuffle(array) {
+/**
+ * @param {any[]} array
+ * @returns {void}
+ */
+function barajar(array){
     if(array.length==0||!Array.isArray(array)){
         return;
     }
@@ -9,5 +13,3 @@ function shuffle(array) {
     return array;
   }
   
-  const numbers = [1,2,3];
-  console.log(shuffle(numbers));
