@@ -2,14 +2,14 @@
 "use strict"
 
 window.addEventListener("load", () => {
-    let flota, config;
+    let flota, generador,config;
 
     config = new ConfiguracionJuego(9, 9);
     probar_generador(config, 1, "Flota «clásica»");
 
-    flota = ConfiguracionJuego.obtenerFlotaAmpliada();
-    config = new ConfiguracionJuego(12, 12, flota);
-    probar_generador(config, 1, "Flota «ampliada»");
+    //flota = ConfiguracionJuego.obtenerFlotaAmpliada();
+    //config = new ConfiguracionJuego(12, 12, flota);
+    //probar_generador(config, 5, "Flota «ampliada»");
 
     /**
      * @param {ConfiguracionJuego} config
@@ -17,12 +17,9 @@ window.addEventListener("load", () => {
      * @param {string | null} titulo
      */
     function probar_generador(config, veces, titulo) {
-        let h2 = window.document.createElement('h2');
-        h2.textContent = titulo;
-        window.document.body.append(h2);
 
         for (let i = 0; i < veces; i++) {
-            let generador = GeneradorTableroJuego.intentar_generar(config);
+             generador = GeneradorTableroJuego.intentar_generar(config);
             if (generador == null) {
                 continue;
             } // if
@@ -32,6 +29,10 @@ window.addEventListener("load", () => {
             
             let salto = window.document.createElement('br');
             window.document.body.append(salto);
+
+            lista(generador);
+
+            generador.tablero[0][4]?.barco.disparo(1)
         }
     }
 });
@@ -40,6 +41,9 @@ window.addEventListener("load", () => {
  * @param {TableroJuego} tablero
  */
 function pintar(tablero) {
+    let contenedor=document.getElementById("contenedor")
+    let div=document.createElement("div");
+    div.className="primerdiv"
     let tabla = window.document.createElement('table');
     tabla.className = "tablero-juego";
     let cuerpo = window.document.createElement('tbody');
@@ -59,5 +63,22 @@ function pintar(tablero) {
     } // for y
 
     tabla.append(cuerpo);
-    document.body.append(tabla);
-} 
+    div.append(tabla);
+    contenedor?.append(div);
+} // pintar
+
+
+function lista(generador){
+   let div= document.getElementById("barcos");
+  
+    for (const barcos of generador.barcos) {
+    let p=document.createElement("p");
+    let salto=document.createElement("br");
+    p.textContent=barcos.tipo.nombre;
+    
+        div?.append(p);
+        div?.append(salto);
+
+        
+    } 
+}
